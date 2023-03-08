@@ -105,10 +105,10 @@ def delete_blogpost(request, blogpost_id):
     if request.user.is_superuser:
         blogpost.delete()
         messages.success(request, f'{blogpost.title} is deleted!')
-        return redirect(reverse('blog'))
     else:
         messages.error(request, 'You cannot do that!')
-        return redirect(reverse('blog'))
+
+    return redirect(reverse('blog'))
 
 
 def blog_comment(request, blogpost_id):
@@ -190,7 +190,7 @@ def delete_comment(request, comment_id):
     if request.user == comment.user_comment or request.user.is_superuser:
         comment.delete()
         messages.success(request, 'Your comment is deleted!')
-        return redirect(reverse('blog'))
     else:
         messages.error(request, 'You not allowed to do that!')
-        return redirect(reverse('blog'))
+
+    return redirect(reverse('blog'))

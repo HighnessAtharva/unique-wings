@@ -22,7 +22,7 @@ class BlogPost(models.Model):
         auto_now_add=True)
 
     def __str__(self):
-        return self.title + ' | ' + str(self.author)
+        return f'{self.title} | {str(self.author)}'
 
 
 class BlogComment(models.Model):
